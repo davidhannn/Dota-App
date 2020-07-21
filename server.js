@@ -8,6 +8,7 @@ app.use(cors());
 app.use("/heroes", require("./routes/heroes"));
 app.use("/items", require("./routes/items"));
 app.use("/matches", require("./routes/matches"));
+app.use("/players", require("./routes/players"));
 //app.use("/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 5000;
