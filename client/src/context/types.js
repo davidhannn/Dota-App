@@ -1,0 +1,7 @@
+export const GET_HEROES = "GET_HEROES";
+export const GET_ITEMS = "GET_ITEMS";
+export const SET_LOADING = "SET_LOADING";
+export const GET_PLAYERS = "GET_PLAYERS";
+export const SEARCH_PLAYERS = "SEARCH_PLAYERS";
+export const GET_RECENT_MATCHES = "GET_RECENT_MATCHES";
+export const GET_SINGLE_MATCH = "GET_SINGLE_MATCH";
