@@ -3,6 +3,7 @@ import dotaContext from "../../context/dotaContext";
 import RecentMatch from "./RecentMatch";
 import Heroes from "../../components/data/heroes.json";
 import GameMode from "../../components/data/gameMode.json";
+import helper from "./helper.js";
 
 const PlayerData = ({ match }) => {
   const DotaContext = useContext(dotaContext);

@@ -243,3 +243,9 @@ a:hover {
   right: 0.5rem;
   color: white;
 }
+
+.player-hero-avatar img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+}

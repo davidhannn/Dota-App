@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useContext, useState } from "react";
 import dotaContext from "../../context/dotaContext";
 import RecentMatch from "./RecentMatch";
-import MatchesPlayerData from "./MatchesPlayerData";
 import Heroes from "../../components/data/heroes.json";
 import GameMode from "../../components/data/gameMode.json";
 import lobbyType from "../../components/data/lobbyType.json";
+import Radiant from "./Radiant";
+import Dire from "./Dire";
 
 const Matches = ({ match }) => {
   const DotaContext = useContext(dotaContext);
@@ -51,11 +52,50 @@ const Matches = ({ match }) => {
             <h3 className="dire">{singleMatch.dire_score}</h3>
           </div>
         </div>
-        {singleMatch.players &&
-          singleMatch.players.map((player) => (
-            <MatchesPlayerData players={player} />
-          ))}
-        {/* <MatchesPlayerData players={singleMatch.players} /> */}
+
+        <table className="match-container">
+          <div className="radiant-match-container">
+            <div className="radiant-team-name">The Radiant</div>
+            <thead>
+              <tr className="team-container-header">
+                <th>Hero</th>
+                <th>Player</th>
+                <th>Kills</th>
+                <th>Deaths</th>
+                <th>Assists</th>
+                <th>LH</th>
+                <th>DN</th>
+                <th>GPM</th>
+                <th>XPM</th>
+                <th>DMG</th>
+                <th>Heal</th>
+                <th>Items</th>
+              </tr>
+            </thead>
+            {singleMatch.players &&
+              singleMatch.players.map((player) =>
+                player.player_slot <= 4 ? <Radiant player={player} /> : null
+              )}
+          </div>
+
+          <div className="dire-match-container">
+            <div className="dire-team-name">The Dire</div>
+            <thead>
+              <tr className="team-container-header">
+                <th>Hero</th>
+                <th>Player</th>
+                <th>Kills</th>
+                <th>Deaths</th>
+                <th>Assists</th>
+                <th>Items</th>
+              </tr>
+            </thead>
+            {singleMatch.players &&
+              singleMatch.players.map((player) =>
+                player.player_slot > 5 ? <Dire player={player} /> : null
+              )}
+          </div>
+        </table>
       </div>
     </Fragment>
   );
