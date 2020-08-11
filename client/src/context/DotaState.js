@@ -11,15 +11,23 @@ import {
   SEARCH_PLAYERS,
   GET_RECENT_MATCHES,
   GET_SINGLE_MATCH,
+  GET_MOST_PLAYED_HEROES,
 } from "./types";
 import fetch from "node-fetch";
+
+// const heroInfo = [];
+// Object.keys(HeroNames).map((key, i) => {
+//   heroInfo[i] = HeroNames[key];
+// });
 
 const DotaState = (props) => {
   const initialState = {
     heroes: [],
+    heroData: [],
     items: [],
     players: [],
     matches: [],
+    mostPlayedHeroes: [],
     player: {},
     singleMatch: {},
     loading: false,
@@ -29,9 +37,6 @@ const DotaState = (props) => {
 
   //Get Heroes
   const getHeroes = async () => {
-    //setLoading();
-    // const apiKey = "?token=-Mf4hjaRoBa08P9s5rWg3WIOB2WvduxpRGNVC0fzIs7LicGa2EE";
-    // const url = "https://api.pandascore.co/dota2/heroes";
     const response = await fetch(
       `https://api.opendota.com/api/heroStats`
     ).then((res) => res.json());
@@ -41,6 +46,9 @@ const DotaState = (props) => {
       payload: response,
     });
   };
+
+  //Get Hero Data
+  // const getHeroData = async (heroName) => {};
 
   // Get Items
   const getItems = async () => {
@@ -98,6 +106,18 @@ const DotaState = (props) => {
     });
   };
 
+  //Get Most Played Heroes
+  const getMostPlayedHeroes = async (id) => {
+    const response = await fetch(
+      `https://api.opendota.com/api/players/${id}/heroes`
+    ).then((res) => res.json());
+
+    dispatch({
+      type: GET_MOST_PLAYED_HEROES,
+      payload: response,
+    });
+  };
+
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
@@ -110,6 +130,7 @@ const DotaState = (props) => {
         players: state.players,
         matches: state.matches,
         singleMatch: state.singleMatch,
+        mostPlayedHeroes: state.mostPlayedHeroes,
         setLoading,
         getHeroes,
         getItems,
@@ -117,6 +138,7 @@ const DotaState = (props) => {
         searchPlayers,
         getRecentMatches,
         getSingleMatch,
+        getMostPlayedHeroes,
       }}
     >
       {props.children}

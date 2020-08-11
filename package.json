@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
     "bootstrap": "^4.5.0",
@@ -24,7 +25,8 @@
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.22",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "node-sass": "^4.14.1"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",

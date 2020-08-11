@@ -20,7 +20,7 @@ const RecentMatch = ({
 }) => {
   return (
     <Fragment>
-      <div className="recent-match">
+      <tr className="recent-match">
         <Link to={`/matches/${match_id}`}>
           <div className="recent-match-avatar-container">
             <img src={heroImgLink} />
@@ -41,7 +41,7 @@ const RecentMatch = ({
         <div className="recent-match-kda-container">
           {kills + "/" + deaths + "/" + assists}
         </div>
-      </div>
+      </tr>
     </Fragment>
   );
 };

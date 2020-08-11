@@ -1,25 +1,36 @@
 import React, { Fragment, useEffect, useContext, useState } from "react";
 import dotaContext from "../../context/dotaContext";
 import RecentMatch from "./RecentMatch";
+import MostPlayedHero from "./MostPlayedHero";
 import Heroes from "../../components/data/heroes.json";
 import GameMode from "../../components/data/gameMode.json";
 import helper from "./helper.js";
 
 const PlayerData = ({ match }) => {
   const DotaContext = useContext(dotaContext);
-  const { player, matches, getPlayers, getRecentMatches } = DotaContext;
+  const {
+    player,
+    matches,
+    mostPlayedHeroes,
+    getPlayers,
+    getRecentMatches,
+    getMostPlayedHeroes,
+  } = DotaContext;
 
   useEffect(() => {
     getPlayers(match.params.id);
     getRecentMatches(match.params.id);
+    getMostPlayedHeroes(match.params.id);
   }, [match.params.id]);
 
   const { competitive_rank, solo_competitive_rank, profile } = player;
   // console.log(player);
   // console.log(matches);
+  console.log(mostPlayedHeroes);
 
   const keys = Object.keys(Heroes);
 
+  // Function to retrieve Hero ID from player's recent match API call and create the Hero Img
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
     for (let j = 0; j < matches.length; j++) {
@@ -31,8 +42,24 @@ const PlayerData = ({ match }) => {
     }
   }
 
+  // const heroKeys = Object.keys(Heroes);
+  // // Function to retrieve Hero ID from player's recent match API call and create the Hero Img
+  // for (let i = 0; i < heroKeys.length; i++) {
+  //   const key = heroKeys[i];
+  //   for (let j = 0; j < mostPlayedHeroes.length; j++) {
+  //     if (mostPlayedHeroes[j].hero_id === Heroes[key].id) {
+  //       const url = "http://cdn.dota2.com" + Heroes[key].img;
+  //       mostPlayedHeroes[j]["hero_name"] = Heroes[key].localized_name;
+  //       mostPlayedHeroes[j]["heroImgLink"] = url;
+  //     }
+  //   }
+  // }
+
+  // console.log(mostPlayedHeroes);
+
   const gameModeKeys = Object.keys(GameMode);
 
+  // Function to identify Game mode Type by matching the Game mode ID with the local data stored in gameMode.json file
   for (let i = 0; i < gameModeKeys.length; i++) {
     const key = gameModeKeys[i];
     for (let j = 0; j < matches.length; j++) {
@@ -63,6 +90,22 @@ const PlayerData = ({ match }) => {
         </div>
       </div>
 
+      <h4>Most Played Heroes</h4>
+      <div className="most-played-heroes-container">
+        <table className="most-played-heroes">
+          <thead>
+            <tr className="most-played-heroes-header">
+              <th>Hero</th>
+              <th>Matches</th>
+              <th>Kills</th>
+            </tr>
+          </thead>
+          {mostPlayedHeroes.map((hero, i) =>
+            i < 10 ? <MostPlayedHero hero={hero} key={i} /> : null
+          )}
+        </table>
+      </div>
+
       <h4>Recent Matches</h4>
       <div className="recent-matches-container">
         <div className="recent-matches-header">
@@ -72,21 +115,6 @@ const PlayerData = ({ match }) => {
           <p>Duration</p>
           <p>K/D/A</p>
         </div>
-        {/* <span>
-          <strong>Hero</strong>
-        </span>
-        <span>
-          <strong>Result</strong>
-        </span>
-        <span>
-          <strong>Match Type</strong>
-        </span>
-        <span>
-          <strong>Duration</strong>
-        </span>
-        <span>
-          <strong>K/D/A</strong>
-        </span> */}
         {matches.map((match, i) => (
           <RecentMatch match={match} key={i} />
         ))}

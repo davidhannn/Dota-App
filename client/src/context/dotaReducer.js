@@ -6,6 +6,7 @@ import {
   SEARCH_PLAYERS,
   GET_RECENT_MATCHES,
   GET_SINGLE_MATCH,
+  GET_MOST_PLAYED_HEROES,
 } from "./types";
 
 export default (state, action) => {
@@ -47,6 +48,12 @@ export default (state, action) => {
       return {
         ...state,
         singleMatch: action.payload,
+        loading: true,
+      };
+    case GET_MOST_PLAYED_HEROES:
+      return {
+        ...state,
+        mostPlayedHeroes: action.payload,
         loading: true,
       };
     default:
