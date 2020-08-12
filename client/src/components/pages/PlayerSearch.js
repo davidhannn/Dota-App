@@ -19,7 +19,7 @@ const Players = () => {
 
   return (
     <div className="search-container">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="d-flex flex-row w-75 p-3">
         <input
           type="text"
           name="text"
@@ -28,8 +28,10 @@ const Players = () => {
           onChange={onChange}
           className="form-control"
         />
+        <button class="btn btn-dark my-2 my-sm-0" type="submit">
+          Search
+        </button>
       </form>
-      <h1></h1>
     </div>
   );
 };

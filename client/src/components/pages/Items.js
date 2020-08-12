@@ -1,44 +1,76 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
+import ItemDetails from "../data/itemDetails";
+import { withStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
+import Grid from "@material-ui/core/Grid";
+import { FormHelperText } from "@material-ui/core";
+
+const HtmlToolTip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.9)",
+    maxWidth: 200,
+    fontSize: theme.typography.pxToRem(10),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
 
 const Items = () => {
   const [items, setItems] = useState([]);
+  const [itemImg, setItemImg] = useState([]);
   const [secretShop, setSecretShop] = useState([]);
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const list = await fetch("/items").then((res) => res.json());
-      const allItems = list.items;
-      const secretItems = allItems.filter((item) => item.secret_shop === 1);
-      const recipeItems = allItems.filter((item) => item.recipe === 1);
-      setSecretShop(secretItems);
-      setRecipe(recipeItems);
-      setItems(allItems);
-    }
-    fetchData();
+    Object.keys(ItemDetails).map((key, i) => items.push(ItemDetails[key]));
+
+    const itemImg = items.map((item) => `http://cdn.dota2.com` + item.img);
+
+    setItemImg(itemImg);
+    setItems(items);
   }, []);
+
+  // const { attrib, cd, charges, cost, dname, hint, id, img, notes } =
+  //   items && items;
+  console.log(items);
+  // console.log(itemImg);
 
   return (
     <div className="item-container">
-      <h3>Secret Shop</h3>
-      <div className="item-grid">
-        {secretShop.map((item, id) => {
-          return <Item key={id} item={item}></Item>;
-        })}
-      </div>
-      <h3>Recipe Items</h3>
-      <div className="item-grid">
-        {recipe.map((item, id) => {
-          return <Item key={id} item={item}></Item>;
-        })}
-      </div>
-      <h3>All Items</h3>
-      <div className="item-grid">
-        {items.map((item, id) => {
-          return <Item key={id} item={item}></Item>;
-        })}
-      </div>
+      {/* <div className="item-grid"></div> */}
+      {/* {itemImg.flatMap((item) =>
+        item.includes("recipe") ? (
+          []
+        ) : (
+          <img
+            className="hero-ability-icon"
+            src={item}
+            onerror="this.style.display='none'"
+          />
+        )
+      )} */}
+
+      {items.flatMap((item, i) =>
+        item.img.includes("recipe") ? (
+          []
+        ) : (
+          // <Grid item>
+          <HtmlToolTip
+            disableFocusListener
+            disableTouchListener
+            title={
+              <div>
+                <p>{item.dname} </p>
+                <p>Cost: {item.cost} </p>
+              </div>
+            }
+          >
+            <img src={`http://cdn.dota2.com` + item.img} />
+          </HtmlToolTip>
+          // </Grid>
+        )
+      )}
     </div>
   );
 };

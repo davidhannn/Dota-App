@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 const PlayerItem = ({
   player: { account_id, personaname, avatarfull, last_match_time, similarity },
@@ -15,7 +14,7 @@ const PlayerItem = ({
       </div>
       <div className="btn-container">
         <Link to={`/players/${account_id}`}>
-          <Button variant="light">Profile</Button>
+          <button>Profile</button>
         </Link>
       </div>
     </div>

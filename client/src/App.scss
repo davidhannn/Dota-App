@@ -1,6 +1,10 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+$navbar-color: #343a40;
+$background-color: #0d1f22;
+$box-color: #18393f;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,10 +13,12 @@
 }
 
 body {
-  background-color: rgb(78, 84, 90);
+  background-color: $background-color;
   margin: 0 auto;
   width: 80%;
+
   font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.1rem;
   margin: 0 auto;
 }
 
@@ -23,9 +29,20 @@ a:hover {
   color: #00f;
 }
 
+.navbar {
+  background-color: $box-color !important;
+}
+
+.home-header {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
 .search-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   padding: 2rem 1rem;
 }
@@ -87,18 +104,62 @@ a:hover {
 
 .hero-data-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 80vh;
+  position: relative;
+  background: $navbar-color;
+  border-radius: 6px;
+  color: white;
+  margin-top: 2rem;
+  padding: 1rem 1rem;
 }
 
-.item-grid {
-  display: grid;
-  justify-content: left;
-  align-content: center;
-  grid-template-columns: repeat(9, auto);
-  grid-template-rows: repeat(9, auto);
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
+.hero-data-header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 1rem;
+}
+
+.hero-data-image {
+  img {
+    border-radius: 5px;
+  }
+}
+
+.hero-data-info {
+  margin-left: 1rem;
+  h4 {
+    font-weight: bold;
+  }
+}
+
+.hero-data-abilities-container {
+  img {
+    margin: 0 0.3rem;
+    border-radius: 4px;
+  }
+}
+
+.hero-data-primary-attr {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-container {
+  img {
+    margin: 0.2rem;
+    border-radius: 4px;
+  }
+}
+
+.item-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .item-card {
@@ -121,22 +182,58 @@ a:hover {
 .player-box {
   display: flex;
   flex-direction: row;
-  background-color: #343a40;
+  flex-wrap: wrap;
+  background-color: $box-color;
   color: white;
   position: relative;
-  padding: 1rem 1rem;
+  max-width: 15rem;
+  padding: 0.7rem 0.7rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.account-name-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .playerListStyle {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
 }
 
-.btn-container {
+@media screen and (max-width: 1000px) {
+  .playerListStyle {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .playerListStyle {
+    display: flex;
+    flex-direction: column;
+  }
+  .player-box {
+    width: 100%;
+  }
+}
+
+.btn-container button {
   position: absolute;
   bottom: 1rem;
   left: 7rem;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.3rem;
+  background-color: $box-color !important;
+  color: white !important;
+  border: 2px solid white;
+  &:hover {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid white;
+  }
 }
 
 .profile-container {
