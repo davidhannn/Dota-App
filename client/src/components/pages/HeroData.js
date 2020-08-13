@@ -85,9 +85,8 @@ const HeroData = ({ match }) => {
             ) : primary_attr == "int" ? (
               <img src={IntLogo} />
             ) : null}
-            {primary_attr}
           </div>
-          <p>Roles: {roles}</p>
+          <p>{roles && roles.join("-")}</p>
         </div>
 
         <div className="hero-data-abilities-container">
@@ -102,18 +101,67 @@ const HeroData = ({ match }) => {
       </div>
 
       <div className="hero-data-body-container">
-        <div className="hero-data-stats">
-          <div className="hero-data-base-stats">
-            <p>Agility: {base_agi}</p>
-            <p>Str: {base_str}</p>
-            <p>Int: {base_int}</p>
-            <p>Armor: {base_armor}</p>
-            <p>Attack Max: {base_attack_max}</p>
-            <p>Attack Min: {base_attack_min}</p>
-            <p>Health Regen: {base_health_regen}</p>
-            <p>Mana: {base_mana}</p>
-            <p>Mana Regen: {base_mana_regen}</p>
-          </div>
+        <div className="hero-data-table">
+          <span className="hero-data-row">
+            Attack Max: <span>{base_attack_max}</span>
+          </span>
+          <span className="hero-data-row">
+            Attack Min: <span>{base_attack_min}</span>
+          </span>
+          <span className="hero-data-row">
+            Attack Range: <span>{attack_range}</span>
+          </span>
+          <span className="hero-data-row">
+            Attack Rate: <span>{attack_rate}</span>
+          </span>
+          <span className="hero-data-row">
+            Attack Type: <span>{attack_type}</span>
+          </span>
+          <span className="hero-data-row">
+            Primary Attr: <span>{primary_attr}</span>
+          </span>
+        </div>
+
+        <div className="hero-data-table">
+          <span className="hero-data-row">
+            Agi: <span>{base_agi}</span>
+          </span>
+          <span className="hero-data-row">
+            Agi Gain: <span>{agi_gain}</span>
+          </span>
+          <span className="hero-data-row">
+            Str: <span>{base_str}</span>
+          </span>
+          <span className="hero-data-row">
+            Str Gain: <span>{str_gain}</span>
+          </span>
+          <span className="hero-data-row">
+            Int: <span>{base_int}</span>
+          </span>
+          <span className="hero-data-row">
+            Int Gain: <span>{int_gain}</span>
+          </span>
+        </div>
+
+        <div className="hero-data-table">
+          <span className="hero-data-row">
+            Armor: <span>{base_armor}</span>
+          </span>
+          <span className="hero-data-row">
+            Health Regen: <span>{base_health_regen}</span>
+          </span>
+          <span className="hero-data-row">
+            Mana: <span>{base_mana}</span>
+          </span>
+          <span className="hero-data-row">
+            Mana Regen: <span>{base_mana_regen}</span>
+          </span>
+          <span className="hero-data-row">
+            Move Speed: <span>{move_speed}</span>
+          </span>
+          <span className="hero-data-row">
+            Projectile Speed: <span>{projectile_speed}</span>
+          </span>
         </div>
       </div>
     </div>
