@@ -342,7 +342,8 @@ a:hover {
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: #343a40;
+  background-color: $box-color;
+  border-radius: 8px;
   font-size: 1rem;
   padding: 1rem;
   margin: 2rem;
@@ -371,17 +372,27 @@ a:hover {
   top: 0.1rem;
 }
 
-.recent-matches-container {
-  background-color: #343a40;
+.most-played-heroes-container {
+  background-color: $box-color;
   color: white;
-  padding: 1rem 1rem;
-  transform: scale(0.9);
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+}
+
+.recent-matches-container {
+  background-color: $box-color;
+  border-radius: 8px;
+  width: 100%;
+  color: white;
+  padding: 0.5rem 1rem;
 }
 
 .recent-matches-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  letter-spacing: 0;
+  padding: 0 8px;
   font-weight: bold;
 }
 
@@ -432,7 +443,7 @@ a:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(78, 84, 90);
+  border-radius: 8px;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -440,11 +451,11 @@ a:hover {
 }
 
 .recent-match:nth-child(even) {
-  background: #4e575f;
+  background: #11282c;
 }
 
 .recent-match:nth-child(odd) {
-  background: #65707b;
+  background: $box-color;
 }
 
 .grid > span {

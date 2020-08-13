@@ -18,12 +18,12 @@ const NavSection = () => {
           <Nav.Link as={Link} to="/items">
             Items
           </Nav.Link>
-          <Nav.Link as={Link} to="/matches">
+          {/* <Nav.Link as={Link} to="/matches">
             Matches
           </Nav.Link>
           <Nav.Link as={Link} to="/players">
             Players
-          </Nav.Link>
+          </Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
       {/* <Form inline>
