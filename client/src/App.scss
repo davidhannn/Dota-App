@@ -398,17 +398,48 @@ a:hover {
 }
 
 .recent-matches-container {
-  background-color: $box-color;
-  border-radius: 8px;
+  border-collapse: collapse;
   width: 100%;
+  border: 2px solid $box-color;
+
   color: white;
-  padding: 0.1rem 0.6rem;
+  letter-spacing: 0;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  margin: 1rem 0;
+  tr {
+    text-align: left;
+    border-radius: 8px;
+  }
+
+  tbody tr:nth-of-type(even) {
+    background-color: #11282c;
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background: $box-color;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .recent-matches-title {
+    transform: scale(0.9);
+    margin-bottom: -4rem;
+  }
+  .recent-matches-container {
+    transform: scale(0.9);
+  }
 }
 
 .recent-matches-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.recent-matches-title {
   letter-spacing: 0;
   margin-top: 0.5rem;
   font-weight: bold;
@@ -440,21 +471,6 @@ a:hover {
   }
 }
 
-.recent-match-result-container {
-  position: relative;
-  left: -8%;
-}
-
-.recent-match-matchtype-container {
-  position: relative;
-  left: -7%;
-}
-
-.recent-match-duration-container {
-  position: relative;
-  left: -3%;
-}
-
 .recent-match-result-container-won {
   color: greenyellow;
 }
@@ -463,27 +479,16 @@ a:hover {
   color: red;
 }
 
-.recent-match {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  letter-spacing: 0;
-  align-items: center;
-  border-radius: 8px;
-  padding: 0 0.5rem;
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  flex-wrap: wrap;
-}
+// .recent-match {
+//   letter-spacing: 0;
+//   align-items: center;
+//   border-radius: 8px;
+//   padding: 0 0.5rem;
 
-.recent-match:nth-child(even) {
-  background: #11282c;
-}
-
-.recent-match:nth-child(odd) {
-  background: $box-color;
-}
+//   width: 100%;
+//   overflow: hidden;
+//   flex-wrap: wrap;
+// }
 
 .grid > span {
   padding: 2rem 1rem;
@@ -610,4 +615,20 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media screen and (max-width: 900px) {
+  .team-row.items {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .match-details-id-container {
+    display: none;
+  }
+
+  .match-details-secondary-container {
+    display: none;
+  }
 }

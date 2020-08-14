@@ -89,7 +89,7 @@ const PlayerData = ({ match }) => {
           </div>
         </div>
       </div>
-      //Most played heroes section
+
       {/* <h4 className="most-played-heroes-title">Most Played Heroes</h4>
       <div className="most-played-heroes-container" role="table">
         <div className="flex-table header" role="rowgroup">
@@ -107,19 +107,22 @@ const PlayerData = ({ match }) => {
           i < 10 ? <MostPlayedHero hero={hero} key={i} /> : null
         )}
       </div> */}
-      <h4 className="recent-matches-header">Recent Matches</h4>
-      <div className="recent-matches-container">
-        <div className="recent-matches-header">
-          <p>Hero</p>
-          <p>Result</p>
-          <p>Match Type</p>
-          <p>Duration</p>
-          <p>K/D/A</p>
-        </div>
-        {matches.map((match, i) => (
-          <RecentMatch match={match} key={i} />
-        ))}
-      </div>
+
+      <h4 className="recent-matches-title">Recent Matches</h4>
+      <table className="recent-matches-container">
+        <tr className="recent-matches-header">
+          <th>Hero</th>
+          <th>Result</th>
+          <th>Match Type</th>
+          <th>Duration</th>
+          <th>K/D/A</th>
+        </tr>
+        <tbody>
+          {matches.map((match, i) => (
+            <RecentMatch match={match} key={i} />
+          ))}
+        </tbody>
+      </table>
     </Fragment>
   );
 };
