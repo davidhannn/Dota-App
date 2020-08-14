@@ -89,24 +89,25 @@ const PlayerData = ({ match }) => {
           </div>
         </div>
       </div>
-
-      <h4>Most Played Heroes</h4>
-      <div className="most-played-heroes-container">
-        <table className="most-played-heroes">
-          <thead>
-            <tr className="most-played-heroes-header">
-              <th>Hero</th>
-              <th>Matches</th>
-              <th>Kills</th>
-            </tr>
-          </thead>
-          {mostPlayedHeroes.map((hero, i) =>
-            i < 10 ? <MostPlayedHero hero={hero} key={i} /> : null
-          )}
-        </table>
-      </div>
-
-      <h4>Recent Matches</h4>
+      //Most played heroes section
+      {/* <h4 className="most-played-heroes-title">Most Played Heroes</h4>
+      <div className="most-played-heroes-container" role="table">
+        <div className="flex-table header" role="rowgroup">
+          <div className="flex-row first" role="columnheader">
+            Hero
+          </div>
+          <div className="flex-row" role="columnheader">
+            Matches
+          </div>
+          <div className="flex-row" role="columnheader">
+            Win%
+          </div>
+        </div>
+        {mostPlayedHeroes.map((hero, i) =>
+          i < 10 ? <MostPlayedHero hero={hero} key={i} /> : null
+        )}
+      </div> */}
+      <h4 className="recent-matches-header">Recent Matches</h4>
       <div className="recent-matches-container">
         <div className="recent-matches-header">
           <p>Hero</p>

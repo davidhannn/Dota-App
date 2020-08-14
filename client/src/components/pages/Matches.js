@@ -22,6 +22,19 @@ const Matches = ({ match }) => {
           <div className="match-details-id-container">
             <div className="match-details-id">Match {singleMatch.match_id}</div>
           </div>
+
+          <div className="match-result">
+            {singleMatch.radiant_win ? (
+              <h2 className="radiant">Radiant Wins!</h2>
+            ) : (
+              <h2 className="dire">Dire Wins!</h2>
+            )}
+          </div>
+          <div className="match-score-container">
+            <h3 className="radiant">{singleMatch.radiant_score}</h3>
+            <h4>{(singleMatch.duration / 60).toFixed(2).replace(".", ":")}</h4>
+            <h3 className="dire">{singleMatch.dire_score}</h3>
+          </div>
           <div className="match-details-secondary-container">
             <dl>
               <dt>
@@ -38,63 +51,58 @@ const Matches = ({ match }) => {
           </div>
         </div>
 
-        <div className="match-result-container">
-          <div className="match-result">
-            {singleMatch.radiant_win ? (
-              <h2 className="radiant">Radiant Wins!</h2>
-            ) : (
-              <h2 className="dire">Dire Wins!</h2>
-            )}
-          </div>
-          <div className="match-score-container">
-            <h3 className="radiant">{singleMatch.radiant_score}</h3>
-            <h4>{(singleMatch.duration / 60).toFixed(2).replace(".", ":")}</h4>
-            <h3 className="dire">{singleMatch.dire_score}</h3>
-          </div>
-        </div>
+        <div className="radiant">The Radiant</div>
 
-        <table className="match-container">
-          <div className="radiant-match-container">
-            <div className="radiant-team-name">The Radiant</div>
-            <thead>
-              <tr className="team-container-header">
-                <th>Hero</th>
-                <th>Player</th>
-                <th>Kills</th>
-                <th>Deaths</th>
-                <th>Assists</th>
-                <th>LH</th>
-                <th>DN</th>
-                <th>GPM</th>
-                <th>XPM</th>
-                <th>DMG</th>
-                <th>Heal</th>
-                <th>Items</th>
-              </tr>
-            </thead>
+        <table className="radiant-match-container">
+          <thead>
+            <tr className="team-table header">
+              <th className="team-row first">Hero</th>
+              <th className="team-row player">Player</th>
+              <th className="team-row kills">K</th>
+              <th className="team-row">D</th>
+              <th className="team-row">A</th>
+              <th className="team-row">LH</th>
+              <th className="team-row">DN</th>
+              <th className="team-row">GPM</th>
+              <th className="team-row">XPM</th>
+              <th className="team-row">DMG</th>
+              <th className="team-row">Heal</th>
+              <th className="team-row items">Items</th>
+            </tr>
+          </thead>
+          <tbody>
             {singleMatch.players &&
               singleMatch.players.map((player) =>
                 player.player_slot <= 4 ? <Radiant player={player} /> : null
               )}
-          </div>
+          </tbody>
+        </table>
 
-          <div className="dire-match-container">
-            <div className="dire-team-name">The Dire</div>
-            <thead>
-              <tr className="team-container-header">
-                <th>Hero</th>
-                <th>Player</th>
-                <th>Kills</th>
-                <th>Deaths</th>
-                <th>Assists</th>
-                <th>Items</th>
-              </tr>
-            </thead>
+        <div className="dire">The Dire</div>
+
+        <table className="radiant-match-container">
+          <thead>
+            <tr className="team-table header">
+              <th className="team-row first">Hero</th>
+              <th className="team-row player">Player</th>
+              <th className="team-row kills">K</th>
+              <th className="team-row">D</th>
+              <th className="team-row">A</th>
+              <th className="team-row">LH</th>
+              <th className="team-row">DN</th>
+              <th className="team-row">GPM</th>
+              <th className="team-row">XPM</th>
+              <th className="team-row">DMG</th>
+              <th className="team-row">Heal</th>
+              <th className="team-row items">Items</th>
+            </tr>
+          </thead>
+          <tbody>
             {singleMatch.players &&
               singleMatch.players.map((player) =>
-                player.player_slot > 5 ? <Dire player={player} /> : null
+                player.player_slot > 5 ? <Radiant player={player} /> : null
               )}
-          </div>
+          </tbody>
         </table>
       </div>
     </Fragment>

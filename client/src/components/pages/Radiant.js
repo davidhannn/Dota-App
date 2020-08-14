@@ -13,6 +13,12 @@ const Radiant = ({ player }) => {
     deaths,
     assists,
     hero_id,
+    last_hits,
+    denies,
+    gold_per_min,
+    xp_per_min,
+    hero_damage,
+    hero_healing,
     item_0,
     item_1,
     item_2,
@@ -53,30 +59,31 @@ const Radiant = ({ player }) => {
 
   return (
     <Fragment>
-      <tbody className="player-row">
-        <tr>
-          <td className="player-hero-avatar">
-            <img src={heroImg} />
-          </td>
+      <tr className="team-table">
+        <td className="team-row first">
+          <img className="team-match-row-hero" src={heroImg} />
+        </td>
+        <td className="team-row player">
           <Link to={`/players/${account_id}`}>
-            <td className="player-name">{personaname}</td>
+            <p>{personaname}</p>
           </Link>
-          <td className="player-kills">{kills}</td>
-          <td className="player-deaths">{deaths}</td>
-          <td className="player-assists">{assists}</td>
-          <td className="player-last-hits">LH</td>
-          <td className="player-denies">DN</td>
-          <td className="player-gpm">GPM</td>
-          <td className="player-xpm">XPM</td>
-          <td className="player-dmg">DMG</td>
-          <td className="player-heal">Heal</td>
-          <td className="player-items">
-            {itemImg.map((item) => (
-              <img src={item} />
-            ))}
-          </td>
-        </tr>
-      </tbody>
+        </td>
+
+        <td className="team-row kills">{kills}</td>
+        <td className="team-row">{deaths}</td>
+        <td className="team-row">{assists}</td>
+        <td className="team-row">{last_hits}</td>
+        <td className="team-row">{denies}</td>
+        <td className="team-row">{gold_per_min}</td>
+        <td className="team-row">{xp_per_min}</td>
+        <td className="team-row">{hero_damage}</td>
+        <td className="team-row">{hero_healing}</td>
+        <td className="team-row items">
+          {itemImg.map((item) => (
+            <img className="team-match-row-item" src={item} />
+          ))}
+        </td>
+      </tr>
     </Fragment>
   );
 };
