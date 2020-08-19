@@ -13,18 +13,6 @@ router.get("/", async (req, res, next) => {
     const list = await axios.get(url);
     const heroes = list.data.result;
 
-    // for (var i = 0; i < heroes.length; i++) {
-    //   var str = parsedResponse.result.heroes[i].name.replace(
-    //     "npc_dota_hero_",
-    //     ""
-    //   );
-    //   heroPortraits.push(
-    //     '<img src="http://cdn.dota2.com/apps/dota2/images/heroes/' +
-    //       str +
-    //       '_sb.png">'
-    //   );
-    // }
-
     res.send(heroes);
   } catch (error) {
     console.log(error.message);
