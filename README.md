@@ -6,6 +6,8 @@ Dota2 website inspired by DotaBuff. Search for players based on their steam user
 
 ## Gif
 
+![dota](https://user-images.githubusercontent.com/7605102/107322606-a05cc500-6a59-11eb-8ffa-bea23dd54154.gif)
+
 Demo: https://dota-finder.herokuapp.com/
 
 #### Technologies
